@@ -58,3 +58,27 @@ const longBooksTitles = longBooks.map(book =>{
 })
 
 console.log(longBooksTitles)
+
+// Snack 2 
+
+const availableBooks = books.filter(book =>{
+    return book.available === true
+})
+
+console.log(availableBooks)
+
+const discountedBooks =  structuredClone(availableBooks)
+
+discountedBooks.map(book =>{
+    
+    book.price = parseInt(book.price) * (1 -0.20)
+    return {...availableBooks}
+})
+
+console.log(discountedBooks)
+
+const fullPricedBook = discountedBooks.find(book =>{
+    return book.price % 1 === 0
+})
+
+console.log(fullPricedBook)
