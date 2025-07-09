@@ -106,13 +106,13 @@ console.log(authors)
 
 // Snack 4 
 
-const ages = books.map(book =>{
+const ages = books.map(book => {
     return book.author.age
 })
 
 console.log(ages)
 
-const agesSum = ages.reduce((acc, currentAge)=>{
+const agesSum = ages.reduce((acc, currentAge) => {
     return acc + currentAge
 }, 0)
 
@@ -133,14 +133,30 @@ async function fecthJson(url) {
 const ids = [2, 13, 7, 21, 19]
 
 async function getBooks(ids) {
-    const promises = ids.map(id =>{
+    const promises = ids.map(id => {
         return fecthJson(`http://localhost:3333/books/${id}`)
     })
     const books = await Promise.all(promises)
     return books
 }
 
-(async() =>{
+(async () => {
     const booksLet = await getBooks(ids)
     console.log(booksLet)
 })()
+
+// Snack 6 
+
+const areThereAvailableBooks = books.some(book => book.available)
+console.log(areThereAvailableBooks)
+
+const booksByPrice = books.sort((a, b) => {
+    const priceA = parseFloat(a.price.replace('€', ''))
+    const priceB = parseFloat(b.price.replace('€', ''))
+    return priceA - priceB
+})
+
+booksByPrice.sort((a, b) => {
+    return b.available - a.available
+})
+console.log(booksByPrice)
