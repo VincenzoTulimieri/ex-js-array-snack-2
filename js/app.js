@@ -121,3 +121,26 @@ console.log(agesSum)
 const avaregeAge = agesSum / ages.length
 
 console.log(avaregeAge)
+
+// Snack 5
+
+async function fecthJson(url) {
+    const response = await fetch(url)
+    const data = response.json()
+    return data
+}
+
+const ids = [2, 13, 7, 21, 19]
+
+async function getBooks(ids) {
+    const promises = ids.map(id =>{
+        return fecthJson(`http://localhost:3333/books/${id}`)
+    })
+    const books = await Promise.all(promises)
+    return books
+}
+
+(async() =>{
+    const booksLet = await getBooks(ids)
+    console.log(booksLet)
+})()
