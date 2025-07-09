@@ -44,3 +44,17 @@ const books = [
 	  tags: ['html', 'advanced', 'junior', 'mid-senior']
   },
 ];
+
+// Snack 1
+
+const longBooks = books.filter(book =>{
+    return book.pages > 300
+})
+
+console.log(longBooks)
+
+const longBooksTitles = longBooks.map(book =>{
+    return book.title
+})
+
+console.log(longBooksTitles)
