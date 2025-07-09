@@ -104,3 +104,20 @@ authors.sort((a, b) => {
 console.log(authors)
 
 
+// Snack 4 
+
+const ages = books.map(book =>{
+    return book.author.age
+})
+
+console.log(ages)
+
+const agesSum = ages.reduce((acc, currentAge)=>{
+    return acc + currentAge
+}, 0)
+
+console.log(agesSum)
+
+const avaregeAge = agesSum / ages.length
+
+console.log(avaregeAge)
